@@ -130,14 +130,17 @@ def db_connection():
 
 Schema is created once before all tests and cleaned up after:
 ```python
-@pytest.fixture(scope='session', autouse=True)
-def setup_test_database():
-    # Create tables once before all tests
-    # Creates users and orders tables with constraints
-    
-    yield
-    
-    # Drop tables after all tests complete
+@pytest.fixture(scope="function")
+def db_connection():
+    connection = DatabaseConfig.get_connection()
+    connection.autocommit = False
+
+    try:
+        yield connection
+    finally:
+        connection.rollback()
+        connection.close()
+
 ```
 
 ### Constraint Testing
