@@ -38,20 +38,24 @@ Professional database testing framework using pytest and PostgreSQL with compreh
 
 ## Database Schema
 ```sql
-users:
-  - id (SERIAL PRIMARY KEY)
-  - username (VARCHAR UNIQUE NOT NULL)
-  - email (VARCHAR UNIQUE NOT NULL)
-  - age (INTEGER)
-  - created_at (TIMESTAMP)
+-- Users table
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    age INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-orders:
-  - id (SERIAL PRIMARY KEY)
-  - user_id (FK -> users.id ON DELETE CASCADE)
-  - product_name (VARCHAR NOT NULL)
-  - quantity (INTEGER CHECK > 0)
-  - total_price (DECIMAL)
-  - order_date (TIMESTAMP)
+-- Orders table
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    product_name VARCHAR(100) NOT NULL,
+    quantity INTEGER NOT NULL CHECK (quantity > 0),
+    total_price DECIMAL(10,2) NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 ```
 
 ## Installation
@@ -130,17 +134,22 @@ def db_connection():
 
 Schema is created once before all tests and cleaned up after:
 ```python
-@pytest.fixture(scope="function")
-def db_connection():
-    connection = DatabaseConfig.get_connection()
-    connection.autocommit = False
-
-    try:
-        yield connection
-    finally:
-        connection.rollback()
-        connection.close()
-
+@pytest.fixture(scope='session', autouse=True)
+def setup_test_database():
+    conn = DatabaseConfig.get_connection()
+    cursor = conn.cursor()
+    
+    # Create tables
+    cursor.execute("""CREATE TABLE IF NOT EXISTS users...""")
+    cursor.execute("""CREATE TABLE IF NOT EXISTS orders...""")
+    
+    conn.commit()
+    yield
+    
+    # Cleanup
+    cursor.execute("DROP TABLE IF EXISTS orders CASCADE")
+    cursor.execute("DROP TABLE IF EXISTS users CASCADE")
+    conn.commit()
 ```
 
 ### Constraint Testing
@@ -184,6 +193,17 @@ tests/test_users_crud.py::TestUsersCRUD::test_read_all_users PASSED
 
 View full HTML report: `reports/report.html`
 
+## Test Execution Evidence
+
+### Terminal Output
+![Terminal Tests](screenshots/terminal_report_Data_Base.jpg)
+
+### HTML Report Summary
+![HTML Report](screenshots/html_report_Data_Base2.jpg)
+
+### Environment Details
+![Environment](screenshots/html_report_Data_Base.jpg)
+
 ## Project Structure
 ```
 QA_Database_Testing/
@@ -209,9 +229,7 @@ QA_Database_Testing/
 **Artur Dmytriyev**  
 QA Automation Engineer
 
-[LinkedIn](https://www.linkedin.com/in/arturdmytriyev/) 
-[GitHub](https://github.com/arturdmt-alt)
-
+[LinkedIn](https://www.linkedin.com/in/arturdmytriyev/) | [GitHub](https://github.com/arturdmt-alt)
 
 ## Project Notes
 
@@ -236,3 +254,4 @@ Designed for QA positions requiring database testing expertise at companies like
 ---
 
 Last updated: December 2025
+
