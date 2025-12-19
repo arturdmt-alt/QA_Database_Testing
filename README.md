@@ -209,13 +209,13 @@ View full HTML report: `reports/report.html`
 ## Test Execution Evidence
 
 ### Terminal Output
-![Terminal Tests](screenshots/terminal_report_database.jpg)
+![Terminal Tests](./screenshots/terminal_report_database.jpg)
 
 ### HTML Report Summary
-![HTML Report](screenshots/html_report_data_base2.jpg)
+![HTML Report](./screenshots/html_report_data_base2.jpg)
 
 ### Environment Details
-![Environment](screenshots/html_report_data_base.jpg)
+![Environment](./screenshots/html_report_data_base.jpg)
 
 ## Project Structure
 
