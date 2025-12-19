@@ -59,30 +59,43 @@ CREATE TABLE orders (
 ```
 
 ## Installation
+
+**Clone and setup:**
 ```bash
-# Clone repository
 git clone https://github.com/arturdmt-alt/QA_Database_Testing.git
 cd QA_Database_Testing
-
-# Create virtual environment
-python -m venv venv
-venv\Scripts\activate  # Windows
-source venv/bin/activate  # Linux/Mac
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Setup PostgreSQL (Option A: Local installation)
-# Install from postgresql.org
-
-# Setup PostgreSQL (Option B: Docker - Recommended)
-docker run --name qa-postgres -e POSTGRES_PASSWORD=testpass -p 5432:5432 -d postgres:15
-
-# Configure .env
-code .env
 ```
 
-**.env file:**
+**Create virtual environment:**
+```bash
+python -m venv venv
+```
+
+**Activate virtual environment:**
+```bash
+# Windows
+venv\Scripts\activate
+
+# Linux/Mac
+source venv/bin/activate
+```
+
+**Install dependencies:**
+```bash
+pip install -r requirements.txt
+```
+
+**Setup PostgreSQL (Option A: Local):**
+- Install from postgresql.org
+
+**Setup PostgreSQL (Option B: Docker - Recommended):**
+```bash
+docker run --name qa-postgres -e POSTGRES_PASSWORD=testpass -p 5432:5432 -d postgres:15
+```
+
+**Configure environment:**
+
+Create `.env` file:
 ```
 DB_HOST=localhost
 DB_PORT=5432
@@ -198,11 +211,11 @@ View full HTML report: `reports/report.html`
 ### Terminal Output
 ![Terminal Tests](screenshots/terminal_report_Data_Base.jpg)
 
-### HTML Report Summary
-![HTML Report](screenshots/html_report_Data_Base2.jpg)
+### HTML Report Summary  
+![HTML Report Summary](screenshots/html_report_Data_Base2.jpg)
 
 ### Environment Details
-![Environment](screenshots/html_report_Data_Base.jpg)
+![Environment Details](screenshots/html_report_Data_Base.jpg)
 
 ## Project Structure
 ```
@@ -229,7 +242,8 @@ QA_Database_Testing/
 **Artur Dmytriyev**  
 QA Automation Engineer
 
-[LinkedIn](https://www.linkedin.com/in/arturdmytriyev/) | [GitHub](https://github.com/arturdmt-alt)
+[LinkedIn](https://www.linkedin.com/in/arturdmytriyev/) 
+[GitHub](https://github.com/arturdmt-alt)
 
 ## Project Notes
 
@@ -254,4 +268,3 @@ Designed for QA positions requiring database testing expertise at companies like
 ---
 
 Last updated: December 2025
-
