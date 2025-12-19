@@ -182,30 +182,6 @@ Tests include advanced SQL operations:
 - Transaction isolation
 - Multi-row operations
 
-## Test Results
-```
-tests/test_data_validation.py::TestDataValidation::test_unique_username_constraint PASSED
-tests/test_data_validation.py::TestDataValidation::test_unique_email_constraint PASSED
-tests/test_data_validation.py::TestDataValidation::test_not_null_username PASSED
-tests/test_data_validation.py::TestDataValidation::test_foreign_key_constraint PASSED
-tests/test_data_validation.py::TestDataValidation::test_check_constraint_quantity PASSED
-tests/test_data_validation.py::TestDataValidation::test_cascade_delete PASSED
-tests/test_orders_crud.py::TestOrdersCRUD::test_create_order PASSED
-tests/test_orders_crud.py::TestOrdersCRUD::test_read_order_with_user PASSED
-tests/test_orders_crud.py::TestOrdersCRUD::test_calculate_total_orders_by_user PASSED
-tests/test_transactions.py::TestTransactions::test_rollback_on_error PASSED
-tests/test_transactions.py::TestTransactions::test_transaction_isolation PASSED
-tests/test_users_crud.py::TestUsersCRUD::test_create_user PASSED
-tests/test_users_crud.py::TestUsersCRUD::test_read_user PASSED
-tests/test_users_crud.py::TestUsersCRUD::test_update_user PASSED
-tests/test_users_crud.py::TestUsersCRUD::test_delete_user PASSED
-tests/test_users_crud.py::TestUsersCRUD::test_read_all_users PASSED
-
-================= 16 passed in 0.96s =================
-```
-
-View full HTML report: `reports/report.html`
-
 ## Test Execution Evidence
 
 ### Terminal Output
@@ -216,9 +192,6 @@ View full HTML report: `reports/report.html`
 
 ### Environment Details
 ![Environment](./screenshots/html_report_database.jpg)
-
-
-## Project Structure
 
 ## Project Structure
 ```
@@ -245,7 +218,7 @@ QA_Database_Testing/
 **Artur Dmytriyev**  
 QA Automation Engineer
 
-[LinkedIn](https://www.linkedin.com/in/arturdmytriyev/) 
+[LinkedIn](https://www.linkedin.com/in/arturdmytriyev/)  
 [GitHub](https://github.com/arturdmt-alt)
 
 ## Project Notes
