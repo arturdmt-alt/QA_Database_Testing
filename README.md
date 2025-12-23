@@ -1,5 +1,6 @@
 # Database Testing Framework - PostgreSQL
 
+[![Database Tests](https://github.com/arturdmt-alt/QA_Database_Testing/actions/workflows/tests.yml/badge.svg)](https://github.com/arturdmt-alt/QA_Database_Testing/actions/workflows/tests.yml)
 ![Tests](https://img.shields.io/badge/tests-16%20passing-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![PostgreSQL](https://img.shields.io/badge/postgresql-18-blue)
@@ -235,7 +236,6 @@ Designed for QA positions requiring database testing expertise at companies like
 
 ## Future Enhancements
 
-- CI/CD integration with GitHub Actions
 - Docker Compose for complete environment setup
 - Additional test coverage for stored procedures
 - Performance testing for large datasets
